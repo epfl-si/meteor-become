@@ -16,6 +16,7 @@ Package.onUse(function(api) {
   api.use('accounts-base');
   api.use('underscore');
   api.use('session');
+  api.use('check');
   api.addFiles('become-common.js');
   api.addFiles('become-client.js', ['client']);
   api.addFiles('become-server.js', ['server']);
