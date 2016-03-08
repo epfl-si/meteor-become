@@ -1,6 +1,6 @@
 var METEOR_LOGIN_TOKEN_KEY = "Meteor.loginToken",
     BECOME_LOGIN_TOKEN_KEY = "Become.origLoginToken",
-    REAL_USER_KEY = "Become.realUserID";
+    REAL_USER_KEY = "Become.realUser";
 
 function saveToken() {
   Session.set(BECOME_LOGIN_TOKEN_KEY,
@@ -22,13 +22,13 @@ function defaultServerErrorHandler(error) {
 }
 
 Become.become = function(targetUserID, opt_callback) {
-  var realUserID = Meteor.userId();
+  var realUser = EJSON.clone(Meteor.user());
   saveToken();
   Accounts.callLoginMethod({
     methodArguments: [{become: targetUserID}],
     userCallback: function(result) {
       if (! result) {
-        Session.set(REAL_USER_KEY, realUserID);
+        Session.set(REAL_USER_KEY, realUser);
       }
       if (opt_callback) {
         opt_callback(result);
@@ -42,7 +42,7 @@ Become.become = function(targetUserID, opt_callback) {
 /**
  * The user the client was originally logged in as. A reactive data source.
  */
-Become.realUserID = function() {
+Become.realUser = function() {
   return Session.get(REAL_USER_KEY);
 };
 

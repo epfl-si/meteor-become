@@ -13,6 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
+  api.use('ejson');
   api.use('accounts-base');
   api.use('underscore');
   api.use('session');
