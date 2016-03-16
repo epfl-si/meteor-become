@@ -1,5 +1,6 @@
 function becomePolicy() { throw new Meteor.Error("BECOME_PERMISSION_DENIED") }
 
+/** @class Become */
 Become = {
   policy: function(policy) {
     if (policy) {
