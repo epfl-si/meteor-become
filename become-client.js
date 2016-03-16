@@ -2,17 +2,6 @@ var METEOR_LOGIN_TOKEN_KEY = "Meteor.loginToken",
     BECOME_LOGIN_TOKEN_KEY = "Become.origLoginToken",
     REAL_USER_KEY = "Become.realUser";
 
-function saveToken() {
-  Session.set(BECOME_LOGIN_TOKEN_KEY,
-              Meteor._localStorage.getItem(METEOR_LOGIN_TOKEN_KEY));
-}
-
-function restoreToken() {
-  Meteor._localStorage.setItem(METEOR_LOGIN_TOKEN_KEY,
-                               Session.get(BECOME_LOGIN_TOKEN_KEY));
-  Session.set(BECOME_LOGIN_TOKEN_KEY, undefined);
-};
-
 function defaultServerErrorHandler(error) {
   if (error instanceof Meteor.Error) {
     alert(error.message);
@@ -21,13 +10,28 @@ function defaultServerErrorHandler(error) {
   }
 }
 
+var Token = {
+  get: function() {
+    return Meteor._localStorage.getItem(METEOR_LOGIN_TOKEN_KEY);
+  },
+  save: function(token) {
+    Session.set(BECOME_LOGIN_TOKEN_KEY, token);
+  },
+  restore: function() {
+    Meteor._localStorage.setItem(METEOR_LOGIN_TOKEN_KEY,
+      Session.get(BECOME_LOGIN_TOKEN_KEY));
+    Session.set(BECOME_LOGIN_TOKEN_KEY, undefined);
+  }
+};
+
 Become.become = function(targetUserID, opt_callback) {
   var realUser = EJSON.clone(Meteor.user());
-  saveToken();
+  var previousToken = Token.get();
   Accounts.callLoginMethod({
     methodArguments: [{become: targetUserID}],
     userCallback: function(result) {
       if (! result) {
+        Token.save(previousToken);
         Session.set(REAL_USER_KEY, realUser);
       }
       if (opt_callback) {
@@ -37,7 +41,7 @@ Become.become = function(targetUserID, opt_callback) {
       }
     }
   });
-}
+};
 
 /**
  * The user the client was originally logged in as. A reactive data source.
@@ -52,6 +56,6 @@ Become.realUser = function() {
 Become.restore = function() {
   Meteor.disconnect();
   Session.set(REAL_USER_KEY, undefined);
-  restoreToken();
+  Token.restore();
   Meteor.reconnect();
-}
+};
