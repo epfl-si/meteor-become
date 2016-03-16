@@ -86,8 +86,3 @@ Become.restore = function() {
   Token.restore();
   Meteor.reconnect();
 };
-
-/**
-@external TransformStream
-@see https://nodejs.org/api/stream.html#stream_class_stream_transform
-*/
