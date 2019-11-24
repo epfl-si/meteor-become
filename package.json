@@ -1,0 +1,34 @@
+{
+  "name": "meteor-become",
+  "version": "0.0.1",
+  "description": "Allow a user of a Meteor application to act as another one",
+  "main": "lib/become.js",
+  "scripts": {
+    "build": "tsc && jsdoc2md *.js --template readme.hbs > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epfl-idevelop/meteor-become.git"
+  },
+  "keywords": [
+    "meteor",
+    "become",
+    "accounts"
+  ],
+  "author": "IDEV-FSD <idev-fsd@groupes.epfl.ch>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epfl-idevelop/meteor-become/issues"
+  },
+  "homepage": "https://github.com/epfl-idevelop/meteor-become#readme",
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/meteor": "^1.4.36",
+    "typedoc": "^0.15.3",
+    "typedoc-plugin-markdown": "^2.2.11",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "meteor-package-import": "0.0.2"
+  }
+}
