@@ -1,0 +1,37 @@
+{
+  "name": "meteor-become",
+  "version": "0.1.0-rc3",
+  "description": "Allow a user of a Meteor application to act as another one",
+  "main": "lib/become.js",
+  "scripts": {
+    "prepare": "set -e -x ; npm run build-js; npm run build-docs",
+    "build-js": "set -e -x; tsc ; sed -i '' -e 's_require(\"meteor/_require(\"meteor-package-import\")(\"_' lib/become.js",
+    "build-docs": "set -e -x ;  rm -rf docs ; typedoc --plugin typedoc-plugin-markdown --readme none --out docs *.ts; if [ -z \"$branch_name\" ]; then branch_name=\"$(git symbolic-ref --short -q HEAD 2>/dev/null || true)\"; fi; if [ -n \"$branch_name\" ]; then sed -i '' -e 's_/blob/[a-f0-9]\\{7,9\\}/_/blob/'\"$branch_name\"'/_' docs/modules/*.md; fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epfl-idevelop/meteor-become.git"
+  },
+  "keywords": [
+    "meteor",
+    "become",
+    "accounts"
+  ],
+  "author": "IDEV-FSD <idev-fsd@groupes.epfl.ch>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epfl-idevelop/meteor-become/issues"
+  },
+  "homepage": "https://github.com/epfl-idevelop/meteor-become#readme",
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/meteor": "^1.4.36",
+    "typedoc": "^0.15.3",
+    "typedoc-plugin-markdown": "^2.2.11",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "meteor-package-import": "0.0.2"
+  }
+}
