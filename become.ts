@@ -5,6 +5,9 @@ import { Session } from 'meteor/session'
 import { Tracker } from 'meteor/tracker'
 import { check } from 'meteor/check'
 
+import debug_ from 'debug'
+const debug = debug_('meteor-become')
+
 const METEOR_LOGIN_TOKEN_KEY = "Meteor.loginToken",
       BECOME_LOGIN_TOKEN_KEY = "Become.origLoginToken",
       REAL_USER_KEY = "Become.realUser"
@@ -49,10 +52,12 @@ export const Become = {
         var realUser = EJSON.clone(Meteor.user())
         var previousToken = Token.get()
 
+        debug('become: calling server with ID %o', targetUserID)
         await new Promise(function (resolve, reject) {
             Accounts.callLoginMethod({
                 methodArguments: [{become: targetUserID}],
                 userCallback: function(error) {
+                    debug('become: userCallback %o', error)
                     if (error) { reject(error) } else { resolve() }
                 }
             })
@@ -107,6 +112,7 @@ export const Become = {
 
 if (Meteor.isServer) {
     Accounts.registerLoginHandler("become", function(options) {
+        debug('Examining %o', options)
         const targetUserId = options.become
         if (! targetUserId) return undefined
 

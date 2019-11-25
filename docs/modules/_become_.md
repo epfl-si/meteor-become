@@ -17,6 +17,7 @@
 * [BECOME_LOGIN_TOKEN_KEY](_become_.md#const-become_login_token_key)
 * [METEOR_LOGIN_TOKEN_KEY](_become_.md#const-meteor_login_token_key)
 * [REAL_USER_KEY](_become_.md#const-real_user_key)
+* [debug](_become_.md#const-debug)
 
 ### Functions
 
@@ -33,7 +34,7 @@
 
 Ƭ **PolicyFunction**: *function*
 
-*Defined in [become.ts:32](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L32)*
+*Defined in [become.ts:35](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L35)*
 
 #### Type declaration:
 
@@ -52,7 +53,7 @@ Name | Type |
 
 • **BECOME_LOGIN_TOKEN_KEY**: *"Become.origLoginToken"* = "Become.origLoginToken"
 
-*Defined in [become.ts:9](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L9)*
+*Defined in [become.ts:12](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L12)*
 
 ___
 
@@ -60,7 +61,7 @@ ___
 
 • **METEOR_LOGIN_TOKEN_KEY**: *"Meteor.loginToken"* = "Meteor.loginToken"
 
-*Defined in [become.ts:8](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L8)*
+*Defined in [become.ts:11](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L11)*
 
 ___
 
@@ -68,7 +69,15 @@ ___
 
 • **REAL_USER_KEY**: *"Become.realUser"* = "Become.realUser"
 
-*Defined in [become.ts:10](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L10)*
+*Defined in [become.ts:13](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L13)*
+
+___
+
+### `Const` debug
+
+• **debug**: *Debugger* =  debug_('meteor-become')
+
+*Defined in [become.ts:9](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L9)*
 
 ## Functions
 
@@ -76,7 +85,7 @@ ___
 
 ▸ **becomePolicy**(`_fromId`: string, `_toId`: string): *false*
 
-*Defined in [become.ts:33](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L33)*
+*Defined in [become.ts:36](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L36)*
 
 **Parameters:**
 
@@ -93,13 +102,13 @@ Name | Type |
 
 ### ▪ **Become**: *object*
 
-*Defined in [become.ts:35](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L35)*
+*Defined in [become.ts:38](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L38)*
 
 ###  become
 
 ▸ **become**(`targetUserID`: string): *Promise‹void›*
 
-*Defined in [become.ts:48](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L48)*
+*Defined in [become.ts:51](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L51)*
 
 Become another user.
 
@@ -120,7 +129,7 @@ Name | Type | Description |
 
 ▸ **policy**(`policy`: [PolicyFunction](_become_.md#policyfunction)): *void*
 
-*Defined in [become.ts:103](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L103)*
+*Defined in [become.ts:108](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L108)*
 
 Set the policy.
 
@@ -136,7 +145,7 @@ Name | Type |
 
 ▸ **realUser**(): *any*
 
-*Defined in [become.ts:68](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L68)*
+*Defined in [become.ts:73](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L73)*
 
 The user the client was originally logged in as. A reactive data source.
 
@@ -146,7 +155,7 @@ The user the client was originally logged in as. A reactive data source.
 
 ▸ **restore**(): *void*
 
-*Defined in [become.ts:88](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L88)*
+*Defined in [become.ts:93](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L93)*
 
 Log out of the account one has become, and back to the main identity.
 
@@ -171,13 +180,13 @@ ___
 
 ### ▪ **Token**: *object*
 
-*Defined in [become.ts:18](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L18)*
+*Defined in [become.ts:21](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L21)*
 
 ###  get
 
 ▸ **get**(): *string | null*
 
-*Defined in [become.ts:19](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L19)*
+*Defined in [become.ts:22](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L22)*
 
 **Returns:** *string | null*
 
@@ -185,7 +194,7 @@ ___
 
 ▸ **restore**(): *void*
 
-*Defined in [become.ts:25](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L25)*
+*Defined in [become.ts:28](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L28)*
 
 **Returns:** *void*
 
@@ -193,7 +202,7 @@ ___
 
 ▸ **save**(`token`: string | null): *void*
 
-*Defined in [become.ts:22](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L22)*
+*Defined in [become.ts:25](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L25)*
 
 **Parameters:**
 
