@@ -71,7 +71,12 @@ export const Become = {
      * The user the client was originally logged in as. A reactive data source.
      */
     realUser () {
-        return Session.get(REAL_USER_KEY)
+        const origUser : Meteor.User = Session.get(REAL_USER_KEY)
+        const currentUser = Meteor.user()
+
+        if (origUser && currentUser && (origUser._id !== currentUser._id)) {
+            return origUser
+        }
     },
 
     /**

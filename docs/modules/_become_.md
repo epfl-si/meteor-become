@@ -129,7 +129,7 @@ Name | Type | Description |
 
 ▸ **policy**(`policy`: [PolicyFunction](_become_.md#policyfunction)): *void*
 
-*Defined in [become.ts:108](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L108)*
+*Defined in [become.ts:113](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L113)*
 
 Set the policy.
 
@@ -143,19 +143,19 @@ Name | Type |
 
 ###  realUser
 
-▸ **realUser**(): *any*
+▸ **realUser**(): *undefined | User*
 
 *Defined in [become.ts:73](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L73)*
 
 The user the client was originally logged in as. A reactive data source.
 
-**Returns:** *any*
+**Returns:** *undefined | User*
 
 ###  restore
 
 ▸ **restore**(): *void*
 
-*Defined in [become.ts:93](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L93)*
+*Defined in [become.ts:98](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L98)*
 
 Log out of the account one has become, and back to the main identity.
 
