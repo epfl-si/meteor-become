@@ -32,8 +32,8 @@ const Token = {
     }
 }
 
-type PolicyFunction = (fromId: string, toId: string) => boolean
-let becomePolicy : PolicyFunction = (_fromId, _toId) => false
+type PolicyFunction = (from: Meteor.User, to: Meteor.User) => boolean
+let becomePolicy : PolicyFunction = (_from, _to) => false
 
 export const Become = {
     /**
@@ -112,19 +112,28 @@ export const Become = {
 
 if (Meteor.isServer) {
     Accounts.registerLoginHandler("become", function(options) {
+        const toUserId = options.become
+        if (! toUserId) return undefined
+
         debug('Examining %o', options)
-        const targetUserId = options.become
-        if (! targetUserId) return undefined
+        check(toUserId, String)
 
-        check(targetUserId, String)
+        const fromUser = Meteor.user()
+        if (! fromUser) {
+            debug("Cannot become another user if not logged in!")   // #changemymind
+            return { error: new  Meteor.Error("BECOME_MUST_BE_LOGGED_IN") }
+        }
 
-        if (! Meteor.users.findOne({_id: targetUserId})) {
+        const toUser = Meteor.users.findOne({_id: toUserId})
+        if (! toUser) {
+            debug("Unknown target user requested: %o", toUserId)
             return { error: new Meteor.Error("BECOME_UNKNOWN_USER") }
         }
-        if (! (Meteor.userId() &&
-               becomePolicy(Meteor.userId() as string, targetUserId))) {
+
+        if (! becomePolicy(fromUser, toUser)) {
+            debug("Policy declined %o becoming %o", fromUser, toUser)
             return {error: new  Meteor.Error("BECOME_PERMISSION_DENIED") }
         }
-        return {userId: targetUserId}
+        return {userId: toUser._id}
     })
 }

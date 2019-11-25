@@ -38,14 +38,14 @@
 
 #### Type declaration:
 
-▸ (`fromId`: string, `toId`: string): *boolean*
+▸ (`from`: User, `to`: User): *boolean*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`fromId` | string |
-`toId` | string |
+`from` | User |
+`to` | User |
 
 ## Variables
 
@@ -83,7 +83,7 @@ ___
 
 ### `Let` becomePolicy
 
-▸ **becomePolicy**(`_fromId`: string, `_toId`: string): *false*
+▸ **becomePolicy**(`_from`: User, `_to`: User): *false*
 
 *Defined in [become.ts:36](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/become.ts#L36)*
 
@@ -91,8 +91,8 @@ ___
 
 Name | Type |
 ------ | ------ |
-`_fromId` | string |
-`_toId` | string |
+`_from` | User |
+`_to` | User |
 
 **Returns:** *false*
 
