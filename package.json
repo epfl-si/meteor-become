@@ -31,6 +31,7 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "meteor-package-import": "0.0.2"
   }
 }
