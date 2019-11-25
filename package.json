@@ -1,6 +1,6 @@
 {
   "name": "meteor-become",
-  "version": "0.0.1",
+  "version": "0.1.0rc1",
   "description": "Allow a user of a Meteor application to act as another one",
   "main": "lib/become.js",
   "scripts": {
