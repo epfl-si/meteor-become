@@ -3,10 +3,10 @@ Allow a user of a Meteor application to act as another one.
 # Example
 
 ```
-import { Become } from 'meteor/become'
+import { Become } from 'meteor-become'
 
-Become.policy(function(fromUserID, toUserID) {
-    return Meteor.user.findOne({id: fromUserID}).isSuperUser;
+Become.policy(function(fromUser, toUser) {
+    return toUser.username.indexOf("quatrava") >= 0
 });
 
 if (Meteor.isClient) {
