@@ -1,4 +1,4 @@
-[meteor-become](../README.md) › [Globals](../globals.md) › ["become"](_become_.md) › ["meteor/tracker"](_become_._meteor_tracker_.md) › [Tracker](_become_._meteor_tracker_.tracker.md)
+[meteor-become](../README.md) › ["become"](_become_.md) › ["meteor/tracker"](_become_._meteor_tracker_.md) › [Tracker](_become_._meteor_tracker_.tracker.md)
 
 # Module: Tracker
 

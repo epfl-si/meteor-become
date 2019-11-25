@@ -1,4 +1,4 @@
-[meteor-become](../README.md) › [Globals](../globals.md) › ["become"](_become_.md)
+[meteor-become](../README.md) › ["become"](_become_.md)
 
 # External module: "become"
 

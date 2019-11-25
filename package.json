@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "set -e -x ; npm run build-js; npm run build-docs",
     "build-js": "set -e -x; tsc ; sed -i '' -e 's_require(\"meteor/_require(\"meteor-package-import\")(\"_' lib/become.js",
-    "build-docs": "set -e -x ;  rm -rf docs ; typedoc --plugin typedoc-plugin-markdown --out docs *.ts; if [ -z \"$branch_name\" ]; then branch_name=\"$(git symbolic-ref --short -q HEAD 2>/dev/null || true)\"; fi; if [ -n \"$branch_name\" ]; then sed -i '' -e 's_/blob/[a-f0-9]\\{7,9\\}/_/blob/'\"$branch_name\"'/_' docs/modules/*.md; fi"
+    "build-docs": "set -e -x ;  rm -rf docs ; typedoc --plugin typedoc-plugin-markdown --readme none --out docs *.ts; if [ -z \"$branch_name\" ]; then branch_name=\"$(git symbolic-ref --short -q HEAD 2>/dev/null || true)\"; fi; if [ -n \"$branch_name\" ]; then sed -i '' -e 's_/blob/[a-f0-9]\\{7,9\\}/_/blob/'\"$branch_name\"'/_' docs/modules/*.md; fi"
   },
   "repository": {
     "type": "git",
