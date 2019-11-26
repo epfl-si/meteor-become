@@ -120,14 +120,15 @@ if (Meteor.isServer) {
         const toUserId = options.become
         if (! toUserId) return undefined
 
-        debug('Examining %o', options)
-        check(toUserId, String)
-
         const fromUser = Meteor.user()
+        debug('Examining request %o on behalf of %o', options, fromUser)
+
         if (! fromUser) {
             debug("Cannot become another user if not logged in!")   // #changemymind
             return { error: new  Meteor.Error("BECOME_MUST_BE_LOGGED_IN") }
         }
+
+        check(toUserId, String)
 
         const toUser = Meteor.users.findOne({_id: toUserId})
         if (! toUser) {
@@ -139,6 +140,7 @@ if (Meteor.isServer) {
             debug("Policy declined %o becoming %o", fromUser, toUser)
             return {error: new  Meteor.Error("BECOME_PERMISSION_DENIED") }
         }
+
         return {userId: toUser._id}
     })
 }
