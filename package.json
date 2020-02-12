@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/epfl-idevelop/meteor-become.git"
+    "url": "git+https://github.com/epfl-si/meteor-become.git"
   },
   "keywords": [
     "meteor",
@@ -20,9 +20,9 @@
   "author": "IDEV-FSD <idev-fsd@groupes.epfl.ch>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/epfl-idevelop/meteor-become/issues"
+    "url": "https://github.com/epfl-si/meteor-become/issues"
   },
-  "homepage": "https://github.com/epfl-idevelop/meteor-become#readme",
+  "homepage": "https://github.com/epfl-si/meteor-become#readme",
   "devDependencies": {
     "@types/debug": "^4.1.5",
     "@types/meteor": "^1.4.36",

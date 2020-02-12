@@ -40,4 +40,4 @@ with `meteor add` if needed):
 
 # API Reference
 
-Start with [the Become object](https://github.com/epfl-idevelop/meteor-become/blob/rewrite/as-npm-package/docs/modules/_become_.md#const-become) (available on client and server)
+Start with [the Become object](https://github.com/epfl-si/meteor-become/blob/rewrite/as-npm-package/docs/modules/_become_.md#const-become) (available on client and server)

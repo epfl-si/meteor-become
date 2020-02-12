@@ -14,7 +14,7 @@
 
 ▸ **nonreactive**<**T**>(`func`: function): *T*
 
-*Defined in [become.ts:17](https://github.com/epfl-idevelop/meteor-become/blob/master/become.ts#L17)*
+*Defined in [become.ts:17](https://github.com/epfl-si/meteor-become/blob/master/become.ts#L17)*
 
 **Type parameters:**
 
